@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type='text/css'>
+	@import url("static/mystyle.css");
+	</style>
+	<title>Wits-Cyber Depense Cycle</title>
+
+<!-- If you are using downloaded FusionCharts libraries, uncomment the below code   -->
+<!--
+
+	{% load static %}
+   	<script type="text/javascript" src="{% static "fusioncharts/fusioncharts.js" %}"></script>
+   	<script type="text/javascript" src="{% static "fusioncharts/themes/fusioncharts.theme.fusion.js" %}"></script>
+
+-->
+
+   <script type="text/javascript" src="//cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+   <script type="text/javascript" src="//cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
+	 <script>
+        function onDataplotClick(eventObj) {
+            var myVar = setInterval(function() {
+	            this.refresh();
+	          }, 5000);
+	        }
+        }
+    </script>
+
+</head>
+<div id='container'>
+	<div id='header'>
+		<div id='logoContainer'>
+			<img src="static/logo2.png" alt='Logo' style="float: left; width: 90px; height: 90px; margin: 3px"/>
+			<div>
+				<h2>Wise Lab. @ GIST</h2>
+
+				<h4>Cyber Defense Cycle</h4>
+			</div>
+		</div>
+		<div id='today'>
+      <div>
+        <p id='clock'>00:00</p>
+				<script>
+		 	 		var clockTarget = document.getElementById("clock");
+		 			function clock() {
+		 				var date = new Date();
+		 				var month = date.getMonth();
+		 				var clockDate = date.getDate();
+		 				var day = date.getDay();
+		 				var week = ['일', '월', '화', '수', '목', '금', '토'];
+		 				var hours = date.getHours();
+		 				var minutes = date.getMinutes();
+		 				var seconds = date.getSeconds();
+
+		 				clockTarget.innerText = `${month+1}월 ${clockDate}일 ${week[day]}요일` +
+
+		 				` ${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes }`  : minutes }:${seconds < 10 ? `0${seconds }`  : seconds }`;
+		 			}
+
+		 			function init() {
+		 				clock();
+		 				setInterval(clock, 1000);
+		 			}
+		 			init();
+
+		 	 </script>
+      </div>
+    </div>
+		<div></div>
+  </div>
+	<div class='border-bottom' id='content'>
+		<div>
+			<center>
+			<div class='chartCont border-right' id="chart-1">{{ c1|safe }}</div>
+			<div class='chartCont' id="chart-2">{{ c2|safe }}</div>
+			<div class='chartCont border-right' id="chart-3">{{ c3|safe }}</div>
+			<div class='chartCont' id="chart-4">{{ c4|safe }}</div>
+			<div class='chartCont border-top' id="chart-5">{{ c5|safe }}</div>
+		</center>
+		</div>
+	</div>
+	<div id='footer'>
+  <p>This application was built using <a href="http://www.fusioncharts.com" target="_blank" title="FusionCharts - Data to delight... in minutes"><b>FusionCharts Suite XT</b></a>
+	</p>
+	</div>
+</div>
+</html>
